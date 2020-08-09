@@ -1,0 +1,11 @@
+<div class="row home-container">
+  <div>
+    <app-filters (filtersData)="updateLaunchCards($event)"></app-filters>
+  </div>
+  <div>
+    <app-cards-list
+      class="cards-list"
+      [filtersData]="filtersData"
+    ></app-cards-list>
+  </div>
+</div>

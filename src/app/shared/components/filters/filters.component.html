@@ -1,0 +1,23 @@
+<div class="filters-container">
+  <div class="header">
+    Filters
+  </div>
+  <div>
+    <div class="filter" *ngFor="let filter of filtersList">
+      <div class="filter-label-container">
+        {{ filter.label }}
+      </div>
+      <div class="filter-values-container">
+        <div class="filter-values" *ngFor="let f of filter.values">
+          <span
+            (click)="selectDeselectFilters(filter, f)"
+            class="filter-value"
+            [ngClass]="{ selected: f.value === filter.selectedValue }"
+          >
+            {{ f.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

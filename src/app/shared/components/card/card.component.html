@@ -1,0 +1,36 @@
+<div class="launch-details-container">
+  <div class="image-container">
+    <img
+      [src]="launchDetails.links.mission_patch_small"
+      width="200"
+      height="200"
+    />
+  </div>
+  <div class="mission-name-container f-600">
+    {{ launchDetails.mission_name }} # {{ launchDetails.flight_number }}
+  </div>
+  <div class="m-10-0">
+    <div class="f-600">Mission Ids:</div>
+    <div *ngFor="let mId of launchDetails.MissionIds">
+      <li>
+        {{ mId }}
+      </li>
+    </div>
+  </div>
+  <div class="m-10-0">
+    <span class="f-600">
+      Launch Year:
+    </span>
+    {{ launchDetails.launch_year }}
+  </div>
+  <div class="m-10-0">
+    <span class="f-600">Successful Launch: </span>
+    {{ launchDetails.launch_success }}
+  </div>
+  <div class="m-10-0">
+    <span class="f-600">
+      Successful Landing:
+    </span>
+    {{ launchDetails.launch_landing }}
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.launch-details-container {
+  width: 200px;
+  background: white;
+  margin: 10px;
+  padding: 15px;
+  height: 400px;
+  border-radius: 8px;
+  .image-container {
+    background: lightgray;
+  }
+  .mission-name-container {
+    margin: 20px 0;
+    color: #4b5496;
+  }
+}
