@@ -10,7 +10,7 @@
     {{ launchDetails.mission_name }} # {{ launchDetails.flight_number }}
   </div>
   <div class="m-10-0">
-    <div class="f-600">Mission Ids:</div>
+    <div class="f-600 field-label">Mission Ids:</div>
     <div *ngFor="let mId of launchDetails.MissionIds">
       <li>
         {{ mId }}
@@ -18,19 +18,19 @@
     </div>
   </div>
   <div class="m-10-0">
-    <span class="f-600">
+    <span class="f-600 field-label">
       Launch Year:
     </span>
     {{ launchDetails.launch_year }}
   </div>
   <div class="m-10-0">
-    <span class="f-600">Successful Launch: </span>
-    {{ launchDetails.launch_success }}
+    <span class="f-600 field-label">Successful Launch: </span>
+    {{ launchDetails.launch_success ? "True" : "False" }}
   </div>
   <div class="m-10-0">
-    <span class="f-600">
+    <span class="f-600 field-label">
       Successful Landing:
     </span>
-    {{ launchDetails.launch_landing }}
+    {{ landingInput }}
   </div>
 </div>

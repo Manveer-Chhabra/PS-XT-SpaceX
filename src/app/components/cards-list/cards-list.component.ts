@@ -18,7 +18,9 @@ import { Subscription } from 'rxjs';
 export class CardsListComponent implements OnInit, OnChanges, OnDestroy {
   @Input() filtersData;
   launchData;
+  landSuccess;
   subscriptionsList = new Subscription();
+  loadingLaunchPrograms = false;
   constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
@@ -35,20 +37,28 @@ export class CardsListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   loadData() {
-    const reqParams = {
-      launch_success: this.filtersData.find(
-        (f) => f.name === 'successfulLaunch'
-      ).selectedValue,
-      land_success: this.filtersData.find((f) => f.name === 'successfulLanding')
-        .selectedValue,
-      launch_year: this.filtersData.find((f) => f.name === 'launchYear')
-        .selectedValue,
-    };
-    console.log(reqParams);
+    const launch_success = this.filtersData.find(
+      (f) => f.name === 'successfulLaunch'
+    ).selectedValue;
+    const land_success = this.filtersData.find(
+      (f) => f.name === 'successfulLanding'
+    ).selectedValue;
+    this.landSuccess = land_success;
+    const launch_year = this.filtersData.find((f) => f.name === 'launchYear')
+      .selectedValue;
+    this.loadingLaunchPrograms = true;
     this.subscriptionsList.add(
-      this.sharedService.getLaunchData(reqParams).subscribe((data) => {
-        this.launchData = data;
-      })
+      this.sharedService
+        .getLaunchData(launch_success, land_success, launch_year)
+        .subscribe(
+          (data) => {
+            this.launchData = data;
+            this.loadingLaunchPrograms = false;
+          },
+          (err) => {
+            this.loadingLaunchPrograms = false;
+          }
+        )
     );
   }
 

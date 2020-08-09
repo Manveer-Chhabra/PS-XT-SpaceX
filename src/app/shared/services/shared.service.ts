@@ -9,14 +9,16 @@ export class SharedService {
   baseURL = 'https://api.spaceXdata.com/v3/launches?limit=100';
   constructor(private httpService: HttpClient) {}
 
-  getLaunchData(reqBody): Observable<any> {
+  getLaunchData(launchSuccess, landSuccess, launchYear): Observable<any> {
     let paramsData = '';
-    if (reqBody.launch_success) {
-      paramsData = paramsData + `&launch_success=${reqBody.launch_success}`;
-    } else if (reqBody.land_success) {
-      paramsData = paramsData + `&land_success=${reqBody.land_success}`;
-    } else if (reqBody.launch_year) {
-      paramsData = paramsData + `&launch_year=${reqBody.launch_year}`;
+    if (launchSuccess && launchSuccess !== 'undefined') {
+      paramsData = paramsData + `&launch_success=${launchSuccess}`;
+    }
+    if (landSuccess && landSuccess !== 'undefined') {
+      paramsData = paramsData + `&land_success=${landSuccess}`;
+    }
+    if (launchYear && launchYear !== 'undefined') {
+      paramsData = paramsData + `&launch_year=${launchYear}`;
     }
     return this.httpService.get(`${this.baseURL}${paramsData}`);
   }

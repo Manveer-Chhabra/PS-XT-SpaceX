@@ -1,3 +1,14 @@
-<div *ngFor="let launch of launchData">
-  <app-card [launchDetails]="launch"></app-card>
+<ng-container *ngIf="!loadingLaunchPrograms && launchData.length !== 0">
+  <div *ngFor="let launch of launchData">
+    <app-card [launchDetails]="launch" [landSuccess]="landSuccess"></app-card>
+  </div>
+</ng-container>
+<div
+  *ngIf="!loadingLaunchPrograms && launchData.length === 0"
+  class="no-data f-600"
+>
+  No data found.
+</div>
+<div *ngIf="loadingLaunchPrograms">
+  <app-spinner></app-spinner>
 </div>

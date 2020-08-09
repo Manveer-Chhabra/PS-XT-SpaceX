@@ -9,6 +9,8 @@ import { FiltersComponent } from './shared/components/filters/filters.component'
 import { CardsListComponent } from './components/cards-list/cards-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './shared/components/card/card.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { CardComponent } from './shared/components/card/card.component';
     FiltersComponent,
     CardsListComponent,
     CardComponent,
+    FooterComponent,
+    SpinnerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

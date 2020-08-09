@@ -2,7 +2,7 @@
   <div>
     <app-filters (filtersData)="updateLaunchCards($event)"></app-filters>
   </div>
-  <div>
+  <div class="cards-list-container">
     <app-cards-list
       class="cards-list"
       [filtersData]="filtersData"
